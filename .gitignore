@@ -4,14 +4,25 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 
+# Data files
+N-CMAPSS/
+*.h5
+*.npy
+*.npz
+
 # Other files and folders
-.settings/
+
 
 # Executables
 *.swf
 *.air
 *.ipa
 *.apk
+
+# Exceptions
+!cmapss.png
+!turbo_engine.jpg
+!EA_log/*
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important

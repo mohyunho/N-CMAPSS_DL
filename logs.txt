@@ -1,0 +1,767 @@
+
+
+sudo openconnect --protocol=gp --user=hyunho.mo@unitn.it https://vpn.icts.unitn.it/gateway
+
+
+
+
+
+
+python3 inference_mlp.py -w 1 -s 1 -bs 512 -ep 60 -pt 10 -vs 0.1 -lr 0.001 -sub 1
+
+
+
+
+trial1
+
+The FLOPs is:188751
+wind length_1,  win stride_1
+# Training samples:  5263447
+# Inference samples:  1253743
+Training time:  1163.4503991603851
+Inference time:  48.74464178085327
+Result in RMSE:  6.44
+
+wind length_1,  win stride_1
+# Training samples:  5263447
+# Inference samples:  1253743
+Training time:  1099.9206492900848
+Inference time:  32.534690141677856
+Result in RMSE:  6.63
+
+# Training samples:  5263447
+# Inference samples:  1253743
+Training time:  1081.05109500885
+Inference time:  33.46583700180054
+Result in RMSE:  6.81
+
+# Training samples:  5263447
+# Inference samples:  1253743
+Training time:  1146.7189536094666
+Inference time:  40.53121757507324
+Result in RMSE:  7.25
+
+
+# Training samples:  5263447
+# Inference samples:  1253743
+Training time:  863.9094729423523
+Inference time:  40.75934672355652
+Result in RMSE:  6.85
+
+
+---
+
+
+python3 inference_mlp.py -w 1 -s 1 -bs 512 -ep 60 -pt 10 -vs 0.1 -lr 0.001 -sub 50
+
+# Training samples:  105272
+# Inference samples:  25076
+Training time:  18.473470449447632
+Inference time:  2.6845107078552246
+Result in RMSE:  6.65
+
+# Training samples:  105272
+# Inference samples:  25076
+Training time:  22.965392351150513
+Inference time:  2.647918462753296
+Result in RMSE:  7.41
+
+# Training samples:  105272
+# Inference samples:  25076
+Training time:  15.977369785308838
+Inference time:  2.9868359565734863
+Result in RMSE:  7.82
+
+# Training samples:  105272
+# Inference samples:  25076
+Training time:  23.2527756690979
+Inference time:  2.581916093826294
+Result in RMSE:  6.82
+
+# Training samples:  105272
+# Inference samples:  25076
+Training time:  15.923941612243652
+Inference time:  2.3596901893615723
+Result in RMSE:  7.48
+
+
+------------
+----------------------------------------------------------------
+
+
+
+
+python3 inference_cnn_aggr.py -w 50 -s 1 -f 10 -k 10 -bs 256 -ep 60 -pt 10 -vs 0.1 -lr 0.001 -sub 1
+
+
+The FLOPs is:311151
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  3169.3944182395935
+Inference time:  150.39525890350342
+Result in RMSE:  6.47
+
+
+The FLOPs is:311151
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  1969.5235471725464
+Inference time:  166.81573104858398
+Result in RMSE:  6.29
+
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  1783.244820356369
+Inference time:  168.96382308006287
+Result in RMSE:  6.57
+
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  2250.7660822868347
+Inference time:  145.57169365882874
+Result in RMSE:  6.3
+
+
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  2437.5590608119965
+Inference time:  121.45044732093811
+Result in RMSE:  6.04
+
+
+python3 inference_cnn_aggr.py -w 50 -s 50 -f 10 -k 10 -bs 128 -ep 60 -pt 10 -vs 0.1 -lr 0.001 -sub 1
+
+The FLOPs is:311151
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  134.21058058738708
+Inference time:  4.237070322036743
+Result in RMSE:  6.92
+
+The FLOPs is:311151
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  142.0975489616394
+Inference time:  4.290865898132324
+Result in RMSE:  6.58
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  144.72168946266174
+Inference time:  4.655816555023193
+Result in RMSE:  7.41
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  84.41433882713318
+Inference time:  4.8325581550598145
+Result in RMSE:  6.92
+
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  70.30952382087708
+Inference time:  1.4977712631225586
+Result in RMSE:  7.14
+
+-----------------------------
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 5 -k 5 -bs 256 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 20 -n_conv 2 -lstm1 8 -lstm2 4
+
+
+The FLOPs is:7028089
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  913.0022358894348
+Inference time:  82.57913088798523
+Result in RMSE:  9.61
+
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 3 -k 3 -bs 256 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 20 -n_conv 1 -lstm1 8 -lstm2 4
+
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  412.174521446228
+Inference time:  36.4867844581604
+Result in RMSE:  8.93
+
+
+--
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 10 -k 10 -bs 128 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 2 -lstm1 10 -lstm2 5
+
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 10 -k 10 -bs 128 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 2 -lstm1 10 -lstm2 5
+
+
+The FLOPs is:38925824
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  1811.366604566574
+Inference time:  80.33268356323242
+Result in RMSE:  6.61
+
+The FLOPs is:38925824
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  1394.2559411525726
+Inference time:  70.44587683677673
+Result in RMSE:  9.85
+
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 5 -k 5 -bs 128 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  605.9146420955658
+Inference time:  57.215771198272705
+Result in RMSE:  9.42
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 5 -k 5 -bs 128 -ep 40 -pt 10 -lr 0.0001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  954.8707702159882
+Inference time:  57.56718921661377
+Result in RMSE:  6.8
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  946.9784746170044
+Inference time:  57.34971475601196
+Result in RMSE:  7.54
+
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  975.4682562351227
+Inference time:  59.138495683670044
+Result in RMSE:  6.65
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  1014.7675285339355
+Inference time:  57.34765911102295
+Result in RMSE:  6.37
+
+The FLOPs is:6416324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  957.303953409195
+Inference time:  46.04826259613037
+Result in RMSE:  6.9
+
+
+
+------------
+python3 inference_cnnlstm.py -w 50 -s 50 -f 3 -k 3 -bs 128 -ep 40 -pt 10 -lr 0.0001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+Total params: 1,822,546
+Trainable params: 1,822,426
+Non-trainable params: 120
+
+
+
+The FLOPs is:3946524
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  938.5350296497345
+Inference time:  52.53566336631775
+Result in RMSE:  6.17
+
+The FLOPs is:3946524
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  1136.0317833423615
+Inference time:  60.66401672363281
+Result in RMSE:  6.21
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  1195.629662513733
+Inference time:  51.71595621109009
+Result in RMSE:  7.14
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  892.1474990844727
+Inference time:  43.82914352416992
+Result in RMSE:  7.3
+
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  911.4515697956085
+Inference time:  59.41418242454529
+Result in RMSE:  6.37
+
+----
+python3 inference_cnnlstm.py -w 50 -s 50 -f 1 -k 1 -bs 128 -ep 40 -pt 10 -lr 0.0001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+The FLOPs is:1678324
+wind length_50,  win stride_50
+# Training samples:  105266
+# Inference samples:  25073
+Training time:  2094.370660305023
+Inference time:  56.93394899368286
+Result in RMSE:  8.58
+--
+
+
+python3 inference_lstm_aggr.py -w 50 -s 50 -f 10 -k 10 -bs 128 -ep 50 -pt 20 -vs 0.1 -lr 0.001 -sub 1 -l1 200 -l2 100
+
+None
+
+
+------
+python3 inference_cnn_aggr.py -w 50 -s 1 -f 10 -k 10 -bs 1024 -ep 30 -pt 5 -vs 0.1 -lr 0.001 -sub 1
+
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d (Conv1D)              (None, 50, 10)            2010      
+_________________________________________________________________
+activation (Activation)      (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 50, 10)            1010      
+_________________________________________________________________
+activation_1 (Activation)    (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 50, 1)             101       
+_________________________________________________________________
+activation_2 (Activation)    (None, 50, 1)             0         
+_________________________________________________________________
+flatten (Flatten)            (None, 50)                0         
+_________________________________________________________________
+dense (Dense)                (None, 50)                2550      
+_________________________________________________________________
+activation_3 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 51        
+_________________________________________________________________
+activation_4 (Activation)    (None, 1)                 0         
+=================================================================
+Total params: 5,722
+Trainable params: 5,722
+Non-trainable params: 0
+
+
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  607.8749282360077
+Inference time:  175.1513340473175
+Result in RMSE:  6.41
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  413.24906969070435
+Inference time:  227.53945922851562
+Result in RMSE:  5.79
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  655.5488197803497
+Inference time:  185.9107050895691
+Result in RMSE:  6.4
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  374.1161558628082
+Inference time:  186.19594287872314
+Result in RMSE:  6.22
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  464.5009346008301
+Inference time:  171.41551899909973
+Result in RMSE:  6.76
+
+
+------
+python3 inference_cnn_aggr.py -w 50 -s 1 -f 10 -k 10 -bs 1024 -ep 30 -pt 5 -vs 0.1 -lr 0.001 -sub 1
+
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d (Conv1D)              (None, 50, 10)            2010      
+_________________________________________________________________
+activation (Activation)      (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 50, 10)            1010      
+_________________________________________________________________
+activation_1 (Activation)    (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 50, 1)             101       
+_________________________________________________________________
+activation_2 (Activation)    (None, 50, 1)             0         
+_________________________________________________________________
+flatten (Flatten)            (None, 50)                0         
+_________________________________________________________________
+dense (Dense)                (None, 50)                2550      
+_________________________________________________________________
+activation_3 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 51        
+_________________________________________________________________
+activation_4 (Activation)    (None, 1)                 0         
+=================================================================
+Total params: 5,722
+Trainable params: 5,722
+Non-trainable params: 0
+
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  481.82790064811707
+Inference time:  192.6196575164795
+Result in RMSE:  6.74
+
+
+
+
+
+
+
+------------------
+
+python3 inference_cnn_aggr.py -w 50 -s 1 -f 20 -k 10 -bs 1024 -ep 30 -pt 5 -vs 0.1 -lr 0.001 -sub 1
+
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d (Conv1D)              (None, 50, 20)            4020      
+_________________________________________________________________
+activation (Activation)      (None, 50, 20)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 50, 20)            4020      
+_________________________________________________________________
+activation_1 (Activation)    (None, 50, 20)            0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 50, 1)             201       
+_________________________________________________________________
+activation_2 (Activation)    (None, 50, 1)             0         
+_________________________________________________________________
+flatten (Flatten)            (None, 50)                0         
+_________________________________________________________________
+dense (Dense)                (None, 50)                2550      
+_________________________________________________________________
+activation_3 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 51        
+_________________________________________________________________
+activation_4 (Activation)    (None, 1)                 0         
+=================================================================
+Total params: 10,842
+Trainable params: 10,842
+Non-trainable params: 0
+_____________________________
+
+The FLOPs is:827201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  705.665456533432
+Inference time:  223.54039072990417
+Result in RMSE:  7.06
+_
+
+
+The FLOPs is:827201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  398.14663219451904
+Inference time:  188.96166396141052
+Result in RMSE:  6.69
+
+(no random)
+python3 inference_cnn_aggr.py -w 50 -s 1 -f 10 -k 10 -bs 1024 -ep 50 -pt 10 -vs 0.1 -lr 0.001 -sub 1
+
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d (Conv1D)              (None, 50, 10)            2010      
+_________________________________________________________________
+activation (Activation)      (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 50, 10)            1010      
+_________________________________________________________________
+activation_1 (Activation)    (None, 50, 10)            0         
+_________________________________________________________________
+conv1d_2 (Conv1D)            (None, 50, 1)             101       
+_________________________________________________________________
+activation_2 (Activation)    (None, 50, 1)             0         
+_________________________________________________________________
+flatten (Flatten)            (None, 50)                0         
+_________________________________________________________________
+dense (Dense)                (None, 50)                2550      
+_________________________________________________________________
+activation_3 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 51        
+_________________________________________________________________
+activation_4 (Activation)    (None, 1)                 0         
+=================================================================
+Total params: 5,722
+Trainable params: 5,722
+Non-trainable params: 0
+
+
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  255.15105366706848
+Inference time:  207.53027749061584
+Result in RMSE:  5.98
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  271.5106258392334
+Inference time:  171.3393635749817
+Result in RMSE:  5.72
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  273.2136914730072
+Inference time:  210.18060684204102
+Result in RMSE:  5.5
+
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  346.79398560523987
+Inference time:  161.0526168346405
+Result in RMSE:  5.93
+
+The FLOPs is:316201
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  410.06535148620605
+Inference time:  181.4243414402008
+Result in RMSE:  5.51
+
+
+
+
+---
+python3 inference_lstm_aggr.py -w 50 -s 1 -f 10 -k 10 -bs 1024 -ep 30 -pt 5 -vs 0.1 -lr 0.001 -sub 1 -l1 200 -l2 100 
+
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lstm (LSTM)                  (None, 50, 200)           176800    
+_________________________________________________________________
+dropout (Dropout)            (None, 50, 200)           0         
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 100)               120400    
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 100)               0         
+_________________________________________________________________
+dense (Dense)                (None, 1)                 101       
+_________________________________________________________________
+activation (Activation)      (None, 1)                 0         
+=================================================================
+Total params: 297,301
+Trainable params: 297,301
+Non-trainable params: 0
+
+
+The FLOPs is:594309
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  5839.377256155014
+Inference time:  269.13259053230286
+Result in RMSE:  5.56
+
+The FLOPs is:594309
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  4372.0528700351715
+Inference time:  253.91949820518494
+Result in RMSE:  5.48
+
+
+The FLOPs is:594309
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  4137.580518007278
+Inference time:  232.0687072277069
+Result in RMSE:  5.36
+
+The FLOPs is:594309
+wind length_50,  win stride_1
+# Training samples:  5263153
+# Inference samples:  1253596
+Training time:  4260.436011791229
+Inference time:  287.01993703842163
+Result in RMSE:  5.79
+
+####################à
+ga_elm1.mean() rmse 7.264
+ga_elm1.mean() params 3411.0
+ga_elm1.mean() p2 1846.0
+ga_elm1.mean() p3 1559.0
+ga_elm1.mean() time 16.187694444444443
+ga_elm1.mean() training_time 337.0
+ga_elm1.std() rmse 0.05460972644339292
+ga_elm1.std() params 210.6313261496389
+ga_elm1.std() p2 63.63087999461337
+ga_elm1.std() p3 169.14490828872147
+ga_elm1.std() time 1.6762955344939434
+ga_elm1.std() training_time 48.94668301098429
+ga_elm2.mean() rmse 7.214
+ga_elm2.mean() params 1863.0
+ga_elm2.mean() p2 1750.0
+ga_elm2.mean() p3 111.0
+ga_elm2.mean() time 9.671722222222224
+ga_elm2.mean() training_time 110.1
+ga_elm2.std() rmse 0.044271887242357255
+ga_elm2.std() params 208.1692687320692
+ga_elm2.std() p2 218.63211109075445
+ga_elm2.std() p3 153.43836982102403
+ga_elm2.std() time 0.44533504133380336
+ga_elm2.std() training_time 22.471957833906885
+len(results_df) 28
+moo results_df.mean() rmse 7.294642857142857
+results_df.mean() params 898.2142857142857
+results_df.mean() p2 81.96428571428571
+results_df.mean() p3 7.571428571428571
+results_df.mean() f1 6.839591235
+results_df.mean() f2 898.2142857142857
+results_df.mean() train_time 55.266223839351106
+moo results_df.std() rmse 0.070104796837895
+results_df.std() params 60.31114210851808
+results_df.std() p2 8.243885019312206
+results_df.std() p3 6.746349198879904
+results_df.std() f1 0.04494121335570692
+results_df.std() train_time 10.118870413665602
+moo_time_avg 0.13888888888888884
+moo_time_std 5.972222222222221
+
+
+
+###########à
+
+----------
+python3 inference_cnnlstm.py -w 50 -s 50 -f 3 -k 3 -bs 128 -ep 40 -pt 10 -lr 0.0001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+
+python3 inference_cnnlstm.py -w 50 -s 50 -f 3 -k 3 -bs 256 -ep 40 -pt 10 -lr 0.001 -vs 0.1 -sub 1 -s_stride 1 -s_len 30 -n_conv 1 -lstm1 10 -lstm2 5
+
+
+-----------------
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 --pop 1 --gen 1
+
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 --pop 3 --gen 3 -bs 50000
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 2 --gen 2 -bs 50000
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 30 --gen 30 -bs 50000
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 20 --gen 20 -bs 50000
+
+python3 -W ignore enas_elm_moo.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 8 --gen 10 -bs 50000 --obj "moo"
+
+.settings/
+python3 -W ignore elm_test.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 28 --gen 30 -bs 50000 --obj "moo"
+
+
+python3 -W ignore enas_elm_moo.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 32 --gen 30 -bs 50000 --obj "moo"
+
+python3 -W ignore enas_elm_moo.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 28 --gen 30 -bs 50000 --obj "moo"
+
+python3 elm_params_time.py -w 1 -s 1 -vs 0.2 -constant 0.0001 -bs 50000
+
+
+python3 -W ignore enas_elm_moo.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 28 --gen 30 -bs 10000 --obj "moo" -t 1
+
+python3 -W ignore enas_elm.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 30 --gen 30 -bs 50000 --obj "soo" -t 2
+
+
+python3 -W ignore elm_test_multi.py -w 1 -s 1 -vs 0.2 -constant 0.0001 --pop 28 --gen 30 -bs 50000 --obj "moo"
+
+
+python3 enas_cnn_baseline.py -w 50 -s 50 -bs 500 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 50 --gen 0 --obj "soo"
+
+python3 val_test_acc.py -w 50 -s 50 -bs 500 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 10 --gen 0 --obj "soo"
+
+python3 enas_cnn_baseline.py -w 50 -s 50 -bs 512 -ep 50 -pt 20 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 val_test_acc.py -w 50 -s 50 -bs 512 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 val_test_acc.py -w 50 -s 50 -bs 512 -ep 30 -pt 30 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 val_test_acc_temp.py -w 50 -s 50 -bs 512 -ep 30 -pt 30 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 val_test_acc.py -w 50 -s 50 -bs 512 -ep 30 -pt 30 -vs 0.2 -t 0 --pop 100 --gen 0 --obj "soo"
+
+python3 val_score.py -w 50 -s 50 -bs 512 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 100 --gen 0 --obj "soo"
+
+python3 val_score.py -w 50 -s 50 -bs 256 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 enas_cnn_baseline.py -w 50 -s 50 -bs 512 -ep 30 -pt 10 -vs 0.2 -t 0 --pop 200 --gen 0 --obj "soo"
+
+python3 enas_cnn_baseline.py -w 50 -s 50 -bs 512 -ep 30 -pt 30 -vs 0.2 -t 0 --pop 100 --gen 0 --obj "soo"
+
+python3 val_score.py -w 50 -s 50 -bs 512 -ep 50 -pt 10 -vs 0.2 -t 0 --pop 100 --gen 0 --obj "soo"
+
+python3 plot_rmse_score.py --pop 200 --gen 0 -t 0 --bs 256
+
+python3 plot_val_test_score.py --pop 100 --gen 0 -t 0 --bs 512
+
+python3 enas_cnn_baseline.py -w 50 -s 50 -bs 512 -ep 30 -pt 30 -vs 0.2 -t 0 --pop 99 --gen 0 --obj "soo"
+
