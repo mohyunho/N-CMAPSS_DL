@@ -28,7 +28,7 @@ python3 sample_creator_unit_auto.py -w 50 -s 1 --test 1 --sampling 10
 
 Please note that we used N = 6 units (u = 2, 5, 10, 16, 18 & 20) for training and M = 3  units (u = 11, 14 & 15) for test, same as for the setting used in [[3]](#3). <br/>
 
-Please note that the data type of the original data is 'np.float64' but we set the data type as 'np.float32' to reduce the size of the data considering memory when we load and create the samples. If you want to change the type, please check 'data_preparation_unit.py' file in /utils folder.  <br/>
+The size of the dataset is significantly large and it can cause memory issues by excessive memory use. Considering memory limitation that may occur when you load and create the samples, we set the data type as 'np.float32' to reduce the size of the data while the data type of the original data is 'np.float64'. Based on our experiments, this does not much affect to the performance when you use the data to train a DL network. If you want to change the type, please check 'data_preparation_unit.py' file in /utils folder.  <br/>
 
 In addition, we offer the data subsampling to handle 'out-of-memory' issues from the given dataset that use the sampling rate of 1Hz. When you set this subsampling input as 10, then it indicates you only take only 1 sample for every 10, the sampling rate is then 0.1Hz. 
 
