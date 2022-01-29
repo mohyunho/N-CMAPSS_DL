@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a7514e9-a20a-4a99-8152-423bbd1ee33c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/sample_creator_unit_auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/sample_creator_unit_auto.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/data_preparation_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_preparation_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
