@@ -21,7 +21,7 @@ from sklearn.metrics import mean_squared_error
 
 
 
-def df_all_creator(data_filepath):
+def df_all_creator(data_filepath, sampling):
     """
 
      """
@@ -71,7 +71,7 @@ def df_all_creator(data_filepath):
     print('')
     print("Operation time (min): ", (time.process_time() - t) / 60)
     print("number of training samples(timestamps): ", Y_dev.shape[0])
-    print("number of training samples(timestamps): ", Y_test.shape[0])
+    print("number of test samples(timestamps): ", Y_test.shape[0])
     print('')
     print("W shape: " + str(W.shape))
     print("X_s shape: " + str(X_s.shape))
@@ -103,8 +103,9 @@ def df_all_creator(data_filepath):
     # Merge all the dataframes
     df_all = pd.concat([df_W, df_Xs, df_Xv, df_Y, df_A], axis=1)
 
-    print (df_all)    # df_all = pd.concat([df_W, df_Xs, df_Xv, df_Y, df_A], axis=1).drop(columns=[ 'P45', 'W21', 'W22', 'W25', 'W31', 'W32', 'W48', 'W50', 'SmFan', 'SmLPC', 'SmHPC', 'phi', 'Fc', 'hs'])
+    print ("df_all", df_all)    # df_all = pd.concat([df_W, df_Xs, df_Xv, df_Y, df_A], axis=1).drop(columns=[ 'P45', 'W21', 'W22', 'W25', 'W31', 'W32', 'W48', 'W50', 'SmFan', 'SmLPC', 'SmHPC', 'phi', 'Fc', 'hs'])
 
+    print ("df_all.shape", df_all.shape)
     # del [[df_W, df_Xs, df_Xv, df_Y, df_A]]
     # gc.collect()
     # df_W = pd.DataFrame()
@@ -113,7 +114,13 @@ def df_all_creator(data_filepath):
     # df_Y = pd.DataFrame()
     # df_A = pd.DataFrame()
 
-    return df_all
+    df_all_smp = df_all[::sampling]
+    print ("df_all_sub", df_all_smp)    # df_all = pd.concat([df_W, df_Xs, df_Xv, df_Y, df_A], axis=1).drop(columns=[ 'P45', 'W21', 'W22', 'W25', 'W31', 'W32', 'W48', 'W50', 'SmFan', 'SmLPC', 'SmHPC', 'phi', 'Fc', 'hs'])
+
+    print ("df_all_sub.shape", df_all_smp.shape)
+
+
+    return df_all_smp
 
 
 
@@ -259,7 +266,7 @@ class Input_Gen(object):
     '''
 
     def __init__(self, df_train, df_test, cols_normalize, sequence_length, sequence_cols, sample_dir_path,
-                 unit_index, stride):
+                 unit_index, sampling, stride):
         '''
 
         '''
@@ -289,6 +296,7 @@ class Input_Gen(object):
         self.sequence_cols = sequence_cols
         self.sample_dir_path = sample_dir_path
         self.unit_index = np.float64(unit_index)
+        self.sampling = sampling
         self.stride = stride
 
 
@@ -329,7 +337,7 @@ class Input_Gen(object):
 
 
 
-        np.savez_compressed(os.path.join(self.sample_dir_path, 'Unit%s_win%s_str%s' %(str(int(self.unit_index)), self.sequence_length, self.stride)),
+        np.savez_compressed(os.path.join(self.sample_dir_path, 'Unit%s_win%s_str%s_smp%s' %(str(int(self.unit_index)), self.sequence_length, self.stride, self.sampling)),
                                          sample=sample_array, label=label_array)
         print ("unit saved")
 

@@ -16,7 +16,6 @@ import time
 import matplotlib
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from pandas import DataFrame
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
@@ -30,26 +29,10 @@ from sklearn.utils import shuffle
 from sklearn import metrics
 from sklearn import preprocessing
 from sklearn import pipeline
-from sklearn.metrics import mean_squared_error
+# from sklearn.metrics import mean_squared_error
 from math import sqrt
-from tqdm import tqdm
 import scipy.stats as stats
-# from sklearn.utils.testing import ignore_warnings
-# from sklearn.exceptions import ConvergenceWarning
-# import keras
-import tensorflow as tf
-print(tf.__version__)
-# import keras.backend as K
-import tensorflow.keras.backend as K
-from tensorflow.keras import backend
-from tensorflow.keras import optimizers
-from tensorflow.keras.models import Sequential, load_model, Model
-from tensorflow.keras.layers import Input, Dense, Flatten, Dropout, Embedding
-from tensorflow.keras.layers import BatchNormalization, Activation, LSTM, TimeDistributed, Bidirectional
-from tensorflow.keras.layers import Conv1D
-from tensorflow.keras.layers import MaxPooling1D
-from tensorflow.keras.layers import concatenate
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+
 
 from utils.data_preparation_unit import df_all_creator, df_train_creator, df_test_creator, Input_Gen
 
@@ -75,13 +58,14 @@ def main():
     parser = argparse.ArgumentParser(description='sample creator')
     parser.add_argument('-w', type=int, default=10, help='window length', required=True)
     parser.add_argument('-s', type=int, default=10, help='stride of window')
+    parser.add_argument('--sampling', type=int, default=1, help='sub sampling of the given data. If it is 10, then this indicates that we assumes 0.1Hz of data collection')
     parser.add_argument('--test', type=int, default='non', help='select train or test, if it is zero, then extract samples from the engines used for training')
-
 
     args = parser.parse_args()
 
     sequence_length = args.w
     stride = args.s
+    sampling = args.sampling
     selector = args.test
 
 
@@ -96,7 +80,7 @@ def main():
     A: auxiliary data
     '''
 
-    df_all = df_all_creator(data_filepath)
+    df_all = df_all_creator(data_filepath, sampling)
 
     '''
     Split dataframe into Train and Test
@@ -151,13 +135,13 @@ def main():
     if selector == 0:
         for unit_index in units_index_train:
             data_class = Input_Gen (df_train, df_test, cols_normalize, sequence_length, sequence_cols, sample_dir_path,
-                                    unit_index, stride =stride)
+                                    unit_index, sampling, stride =stride)
             data_class.seq_gen()
 
     else:
         for unit_index in units_index_test:
             data_class = Input_Gen (df_train, df_test, cols_normalize, sequence_length, sequence_cols, sample_dir_path,
-                                    unit_index, stride =stride)
+                                    unit_index, sampling, stride =stride)
             data_class.seq_gen()
 
 
