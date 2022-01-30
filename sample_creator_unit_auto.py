@@ -36,15 +36,11 @@ import scipy.stats as stats
 
 from utils.data_preparation_unit import df_all_creator, df_train_creator, df_test_creator, Input_Gen
 
-# import tensorflow.compat.v1 as tf
-# tf.disable_v2_behavior()
+
 seed = 0
 random.seed(0)
 np.random.seed(seed)
-# Ignore tf err log
-pd.options.mode.chained_assignment = None  # default='warn'
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
-tf.get_logger().setLevel(logging.ERROR)
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 data_filedir = os.path.join(current_dir, 'N-CMAPSS')
