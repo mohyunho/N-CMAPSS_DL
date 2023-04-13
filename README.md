@@ -70,3 +70,15 @@ Chao, Manuel Arias, Chetan Kulkarni, Kai Goebel, and Olga Fink. "Fusing physics-
 <a id="3">[4]</a> 
 Mo, Hyunho, and Giovanni Iacca. "Multi-objective optimization of extreme learning machine for remaining useful life prediction." In Applications of Evolutionary Computation: 25th European Conference, EvoApplications 2022, Held as Part of EvoStar 2022, Madrid, Spain, April 20–22, 2022, Proceedings, pp. 191-206. Cham: Springer International Publishing, 2022.
 
+Bibtex entry ready to be cited
+```
+@inproceedings{mo2022multi,
+  title={Multi-objective optimization of extreme learning machine for remaining useful life prediction},
+  author={Mo, Hyunho and Iacca, Giovanni},
+  booktitle={Applications of Evolutionary Computation: 25th European Conference, EvoApplications 2022, Held as Part of EvoStar 2022, Madrid, Spain, April 20--22, 2022, Proceedings},
+  pages={191--206},
+  year={2022},
+  organization={Springer}
+}
+```
+
